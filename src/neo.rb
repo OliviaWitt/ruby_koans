@@ -293,6 +293,8 @@ module Neo
 
     def boring_end_screen
       puts "Mountains are again merely mountains"
+      puts "You have completed the path, but your journey is not over."
+      puts "Go and create, and one day you may become a master."
     end
 
     def artistic_end_screen
@@ -333,6 +335,9 @@ module Neo
                  ,::::::::::::::::              ::,, ,   ,:::,
                       ,::::                         , ,,
                                                   ,,,
+
+            You have completed the path, but your journey is not over.
+               Go and create, and one day you may become a master.
 ENDTEXT
         puts completed
     end
@@ -439,12 +444,12 @@ ENDTEXT
       setup
       begin
         send(name)
-      rescue StandardError, Neo::Sensei::FailedAssertionError => ex
+      rescue Exception => ex
         failed(ex)
       ensure
         begin
           teardown
-        rescue StandardError, Neo::Sensei::FailedAssertionError => ex
+        rescue Exception => ex
           failed(ex) if passed?
         end
       end
