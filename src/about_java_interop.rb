@@ -21,9 +21,9 @@ class AboutJavaInterop < Neo::Koan
     assert_equal __(true), Java::JavaUtil::ArrayList == java.util.ArrayList
   end
 
-  def test_include_class_includes_class_in_module_scope
+  def test_java_import_includes_class_in_module_scope
     assert_nil defined?(TreeSet) # __
-    include_class "java.util.TreeSet"
+    java_import "java.util.TreeSet"
     assert_equal __("constant"), defined?(TreeSet)
   end
 
@@ -31,10 +31,10 @@ class AboutJavaInterop < Neo::Koan
   #
   # What if we use:
   #
-  #   include_class "java.lang.String"
+  #   java_import "java.lang.String"
   #
   # What would be the value of the String constant after this
-  # include_class is run?  Would it be useful to provide a way of
+  # java_import is run?  Would it be useful to provide a way of
   # aliasing java classes to different names?
 
   JString = java.lang.String
